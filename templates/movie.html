@@ -1,1 +1,28 @@
-<!-- movie detail page -->
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ movie.title }}</title>
+</head>
+<body>
+  <h1>{{ movie.title }}</h1>
+  <img src="{{ movie.image_url }}" alt="{{ movie.title }}" width="300">
+  <p>کارگردان: {{ movie.director }}</p>
+  <p>توزیع‌کننده: {{ movie.distribution_title }}</p>
+  <p>تاریخ اکران: {{ movie.start_date }}</p>
+
+  <h3>ارسال نظر</h3>
+  <form method="post" action="/comment">
+    <input type="hidden" name="movie_id" value="{{ movie.id }}">
+    نام: <input type="text" name="name"><br>
+    نظر: <textarea name="text"></textarea><br>
+    <button type="submit">ارسال</button>
+  </form>
+
+  <h3>نظرات</h3>
+  {% for c in comments %}
+    <div><strong>{{ c.name }}</strong>: {{ c.text }}</div>
+  {% endfor %}
+</body>
+</html>

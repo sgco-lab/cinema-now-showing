@@ -1,1 +1,20 @@
-<!-- index page -->
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>فیلم‌های در حال اکران</title>
+</head>
+<body>
+  <h1>فیلم‌های در حال اکران</h1>
+  {% for movie in movies %}
+    <div>
+      <img src="{{ movie.image_url }}" alt="{{ movie.title }}" width="150">
+      <h2><a href="/movie/{{ movie.id }}">{{ movie.title }}</a></h2>
+      <p>کارگردان: {{ movie.director }}</p>
+      <p>توزیع‌کننده: {{ movie.distribution_title }}</p>
+      <p>تاریخ اکران: {{ movie.start_date }}</p>
+    </div>
+  {% endfor %}
+</body>
+</html>
